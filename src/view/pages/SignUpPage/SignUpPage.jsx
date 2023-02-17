@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { signUpSchema } from "./schema";
+import { formSchema } from "./schema";
 import * as S from "./styles";
 
 export const SignUpPage = () => {
@@ -12,7 +12,7 @@ export const SignUpPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(formSchema),
     criteriaMode: "all",
   });
 
