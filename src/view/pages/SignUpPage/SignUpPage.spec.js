@@ -3,9 +3,10 @@ import { renderUI } from "app/testing/testHelper";
 import { SignUpPage } from "./SignUpPage";
 
 describe("SignUpPage", () => {
-  it("should load and display page name", () => {
+  it("should load and render correctly", () => {
     renderUI(<SignUpPage />);
 
+    expect(screen.getByText("Sign Up")).toBeVisible();
     expect(screen.getByText("First Name")).toBeVisible();
     expect(screen.getByText("E-mail")).toBeVisible();
     expect(screen.getByText("Password")).toBeVisible();
