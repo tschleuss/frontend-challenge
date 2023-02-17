@@ -6,6 +6,9 @@ describe("SignUpPage", () => {
   it("should load and display page name", () => {
     renderUI(<SignUpPage />);
 
-    expect(screen.getByText("SignUpPage")).toBeVisible();
+    expect(screen.getByText("First Name")).toBeVisible();
+    expect(screen.getByText("E-mail")).toBeVisible();
+    expect(screen.getByText("Password")).toBeVisible();
+    expect(screen.getByRole("button", { name: /Next/i })).toBeVisible();
   });
 });
