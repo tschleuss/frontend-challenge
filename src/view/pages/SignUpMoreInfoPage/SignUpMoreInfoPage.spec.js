@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderUI } from "app/testing/testHelper";
 import { SignUpMoreInfoPage } from "./SignUpMoreInfoPage";
 
 describe("SignUpMoreInfoPage", () => {
   it("should load and display page name", () => {
-    render(<SignUpMoreInfoPage />);
+    renderUI(<SignUpMoreInfoPage />);
 
     expect(screen.getByText("SignUpMoreInfoPage")).toBeVisible();
   });

@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react"
+import { screen } from "@testing-library/react"
+import { renderUI } from "app/testing/testHelper";
 import { SignUpErrorPage } from "./SignUpErrorPage"
 
 describe("SignUpErrorPage", () => {
   it("should load and display page name", () => {
-    render(<SignUpErrorPage />);
+    renderUI(<SignUpErrorPage />);
 
     expect(screen.getByText("SignUpErrorPage")).toBeVisible();
   });
