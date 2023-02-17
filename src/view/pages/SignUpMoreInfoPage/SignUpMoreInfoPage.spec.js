@@ -6,7 +6,9 @@ describe("SignUpMoreInfoPage", () => {
   it("should load and render correctly", () => {
     renderUI(<SignUpMoreInfoPage />);
 
-    expect(screen.getByText("Additional Info")).toBeVisible();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Additional Info/i })
+    ).toBeVisible();
     expect(screen.getByText("Select your favorite color")).toBeVisible();
     expect(screen.getByText("I agree to Terms and Conditions")).toBeVisible();
     expect(screen.getByRole("button", { name: /Back/i })).toBeVisible();
