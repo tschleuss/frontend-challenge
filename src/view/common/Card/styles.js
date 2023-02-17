@@ -7,5 +7,6 @@ export const Container = styled.section`
   width: 100%;
   background-color: ${colors.containerBackground};
   padding: ${spacing.medium};
-  border-radius: ${radius.medium};
+  border-radius: ${radius.large};
+  box-shadow: 10px 10px 13px -7px rgba(0,0,0,0.1);
 `;
