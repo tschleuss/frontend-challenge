@@ -1,11 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { updateSignUpInfo } from "app/data/slices/signupSlice";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formSchema } from "./schema";
 import * as S from "./styles";
 
 export const SignUpMoreInfoPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
@@ -17,7 +20,7 @@ export const SignUpMoreInfoPage = () => {
   });
 
   const onSubmit = (data, event) => {
-    console.log(data);
+    dispatch(updateSignUpInfo(data));
     navigate("/confirmation");
   };
 
