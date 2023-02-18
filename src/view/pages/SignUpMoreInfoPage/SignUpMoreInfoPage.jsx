@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useFetchColorsQuery } from "app/api/baseApi";
 import { updateSignUpInfo } from "app/data/slices/signupSlice";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -10,6 +11,8 @@ import * as S from "./styles";
 export const SignUpMoreInfoPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoading, data: colors = [] } = useFetchColorsQuery();
+
   const {
     register,
     handleSubmit,
@@ -39,8 +42,11 @@ export const SignUpMoreInfoPage = () => {
           <option value="default" disabled>
             Choose a color...
           </option>
-          <option value="white">white</option>
-          <option value="blue">blue</option>
+          {colors.map((color) => (
+            <option key={color} value={color}>
+              {color}
+            </option>
+          ))}
         </select>
         {errors.color && <span>This field is required</span>}
         <label>

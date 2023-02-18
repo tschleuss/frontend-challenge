@@ -1,3 +1,4 @@
+import { useSignupUserMutation } from "app/api/baseApi";
 import { selectSignUpSummary } from "app/data/selectors/selectSignupSummary";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -7,6 +8,17 @@ import * as S from "./styles";
 export const SignUpConfirmationPage = () => {
   const navigate = useNavigate();
   const signupSummary = useSelector(selectSignUpSummary);
+  const [signupUser, { isLoading, isError, isSuccess }] =
+    useSignupUserMutation();
+
+  const onSubmit = async () => {
+    try {
+      const result = await signupUser(signupSummary).unwrap();
+      navigate("/success");
+    } catch (error) {
+      console.error("rejected", error);
+    }
+  };
 
   return (
     <>
@@ -38,12 +50,7 @@ export const SignUpConfirmationPage = () => {
         >
           Back
         </S.ReturnButton>
-        <S.SubmitButton
-          type="button"
-          onClick={(event) => {
-            navigate("/success");
-          }}
-        >
+        <S.SubmitButton type="button" onClick={onSubmit}>
           Next
         </S.SubmitButton>
       </S.ActionFooter>
