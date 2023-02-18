@@ -29,10 +29,13 @@ export const SignUpMoreInfoPage = () => {
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <label id="color-label">Select your favorite color</label>
         <select
+          defaultValue="default"
           aria-invalid={errors.color ? "true" : "false"}
           {...register("color", { required: true })}
         >
-          <option selected></option>
+          <option value="default" disabled>
+            Choose a color...
+          </option>
           <option value="white">white</option>
           <option value="blue">blue</option>
         </select>
