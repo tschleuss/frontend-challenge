@@ -26,16 +26,20 @@ export const SignUpConfirmationPage = () => {
         <h1>Confirmation</h1>
       </header>
       <p>
-        <span>First Name:</span> {signupSummary.name}
+        <span>First Name:</span>
+        {signupSummary.name}
       </p>
       <p>
-        <span>E-mail:</span> {signupSummary.email}
+        <span>E-mail:</span>
+        {signupSummary.email}
       </p>
       <p>
-        <span>Password:</span> {signupSummary.password}
+        <span>Password:</span>
+        {signupSummary.password}
       </p>
       <p>
-        <span>Favorite Color:</span> {signupSummary.color}
+        <span>Favorite Color:</span>
+        {signupSummary.color}
       </p>
       <p>
         <span>Terms and Conditions:</span>{" "}
