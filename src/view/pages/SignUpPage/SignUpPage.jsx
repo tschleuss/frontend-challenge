@@ -6,6 +6,7 @@ import { formSchema } from "./schema";
 import * as S from "./styles";
 import { useDispatch } from "react-redux";
 import { updateSignUpInfo } from "app/data/slices/signupSlice";
+import { InputControl } from "view/common/InputControl";
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,13 @@ export const SignUpPage = () => {
   });
 
   const onSubmit = (data, event) => {
-    dispatch(updateSignUpInfo(data))
+    dispatch(updateSignUpInfo(data));
     navigate("/more-info");
   };
+
+  const nameField = register("name", { required: true });
+  const emailField = register("email", { required: true });
+  const passwordField = register("password", { required: true });
 
   return (
     <>
@@ -31,33 +36,27 @@ export const SignUpPage = () => {
         <h1>Sign Up</h1>
       </header>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <label id="name-label">First Name</label>
-        <input
+        <InputControl
           type="text"
+          label="First Name"
           placeholder="First Name"
-          aria-labelledby="name-label"
-          aria-invalid={errors.name ? "true" : "false"}
-          {...register("name", { required: true })}
+          errors={errors}
+          {...nameField}
         />
-        {errors.name && <span>This field is required</span>}
-        <label id="email-label">E-mail</label>
-        <input
-          type="email"
+        <InputControl
+          type="text"
+          label="E-mail"
           placeholder="Email Address"
-          aria-labelledby="email-label"
-          aria-invalid={errors.email ? "true" : "false"}
-          {...register("email", { required: true })}
+          errors={errors}
+          {...emailField}
         />
-        {errors.email && <span>This field is required</span>}
-        <label id="password-label">Password</label>
-        <input
+        <InputControl
           type="password"
+          label="Password"
           placeholder="Password"
-          aria-labelledby="password-label"
-          aria-invalid={errors.password ? "true" : "false"}
-          {...register("password", { required: true })}
+          errors={errors}
+          {...passwordField}
         />
-        {errors.password && <span>This field is required</span>}
         <S.SubmitButton type="submit">Next</S.SubmitButton>
       </S.Form>
     </>
