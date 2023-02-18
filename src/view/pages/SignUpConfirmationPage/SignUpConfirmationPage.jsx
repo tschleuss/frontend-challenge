@@ -1,9 +1,12 @@
+import { selectSignUpSummary } from "app/data/selectors/selectSignupSummary";
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 export const SignUpConfirmationPage = () => {
   const navigate = useNavigate();
+  const signupSummary = useSelector(selectSignUpSummary);
 
   return (
     <>
@@ -11,19 +14,20 @@ export const SignUpConfirmationPage = () => {
         <h1>Confirmation</h1>
       </header>
       <p>
-        <span>First Name:</span> John
+        <span>First Name:</span> {signupSummary.name}
       </p>
       <p>
-        <span>E-mail:</span> john@domain.com
+        <span>E-mail:</span> {signupSummary.email}
       </p>
       <p>
-        <span>Password:</span> ******
+        <span>Password:</span> {signupSummary.password}
       </p>
       <p>
-        <span>Favorite Color:</span> blue
+        <span>Favorite Color:</span> {signupSummary.color}
       </p>
       <p>
-        <span>Terms and Conditions:</span> agreed
+        <span>Terms and Conditions:</span>{" "}
+        {signupSummary.terms ? "Agreed" : "Didn't Agreed"}
       </p>
       <S.ActionFooter>
         <S.ReturnButton
