@@ -5,6 +5,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { CheckboxControl } from "view/common/CheckboxControl";
+import { SelectControl } from "view/common/SelectControl";
 import { formSchema } from "./schema";
 import * as S from "./styles";
 
@@ -27,39 +29,36 @@ export const SignUpMoreInfoPage = () => {
     navigate("/confirmation");
   };
 
+  const colorField = register("color", { required: true });
+  const termsField = register("terms", { required: true });
+
   return (
     <>
       <header>
         <h1>Additional Info</h1>
       </header>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <label id="color-label">Select your favorite color</label>
-        <select
-          defaultValue="default"
-          aria-invalid={errors.color ? "true" : "false"}
-          {...register("color", { required: true })}
+        <SelectControl
+          label="Select your favorite color"
+          defaultValue="-default-"
+          errors={errors}
+          {...colorField}
         >
-          <option value="default" disabled>
-            Choose a color...
+          <option value="-default-" disabled>
+            Select a color...
           </option>
           {colors.map((color) => (
             <option key={color} value={color}>
               {color}
             </option>
           ))}
-        </select>
-        {errors.color && <span>This field is required</span>}
-        <label>
-          <input
-            type="checkbox"
-            name="terms"
-            value={true}
-            aria-invalid={errors.terms ? "true" : "false"}
-            {...register("terms", { required: true })}
-          />
-          I agree to Terms and Conditions
-        </label>
-        {errors.terms && <span>This field is required</span>}
+        </SelectControl>
+        <CheckboxControl
+          type="checkbox"
+          label="I agree to Terms and Conditions"
+          errors={errors}
+          {...termsField}
+        />
         <S.ActionFooter>
           <S.ReturnButton
             type="button"
