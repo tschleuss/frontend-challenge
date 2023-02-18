@@ -13,10 +13,10 @@ export const SignUpConfirmationPage = () => {
 
   const onSubmit = async () => {
     try {
-      const result = await signupUser(signupSummary).unwrap();
+      await signupUser(signupSummary).unwrap();
       navigate("/success");
     } catch (error) {
-      console.error("rejected", error);
+      navigate("/error");
     }
   };
 
@@ -25,26 +25,28 @@ export const SignUpConfirmationPage = () => {
       <header>
         <h1>Confirmation</h1>
       </header>
-      <p>
-        <span>First Name:</span>
-        {signupSummary.name}
-      </p>
-      <p>
-        <span>E-mail:</span>
-        {signupSummary.email}
-      </p>
-      <p>
-        <span>Password:</span>
-        {signupSummary.password}
-      </p>
-      <p>
-        <span>Favorite Color:</span>
-        {signupSummary.color}
-      </p>
-      <p>
-        <span>Terms and Conditions:</span>{" "}
-        {signupSummary.terms ? "Agreed" : "Didn't Agreed"}
-      </p>
+      <S.ListContainer>
+        <S.ItemWrapper>
+          <span>First Name:</span>
+          {signupSummary.name}
+        </S.ItemWrapper>
+        <S.ItemWrapper>
+          <span>E-mail:</span>
+          {signupSummary.email}
+        </S.ItemWrapper>
+        <S.ItemWrapper>
+          <span>Password:</span>
+          {signupSummary.password}
+        </S.ItemWrapper>
+        <S.ItemWrapper>
+          <span>Favorite Color:</span>
+          {signupSummary.color}
+        </S.ItemWrapper>
+        <S.ItemWrapper>
+          <span>Terms and Conditions:</span>{" "}
+          {signupSummary.terms ? "Agreed" : "Didn't Agreed"}
+        </S.ItemWrapper>
+      </S.ListContainer>
       <S.ActionFooter>
         <S.ReturnButton
           type="button"
