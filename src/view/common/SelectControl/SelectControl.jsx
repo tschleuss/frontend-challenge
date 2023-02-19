@@ -9,7 +9,9 @@ export const SelectControl = forwardRef(
     ref
   ) => (
     <S.Container>
-      <S.Label id={`id-${name}`}>{label}</S.Label>
+      <S.Label id={`id-${name}`} htmlFor={name}>
+        {label}
+      </S.Label>
       <S.Select
         name={name}
         ref={ref}

@@ -13,9 +13,11 @@ export const AlertMessage = ({ severity, message }) => {
 
   return (
     <S.Container data-severity={severity}>
-      <S.IconWrapper>
-        <Icon size={32} />
-      </S.IconWrapper>
+      {Icon ? (
+        <S.IconWrapper>
+          <Icon size={32} />
+        </S.IconWrapper>
+      ) : null}
       <S.MessageWrapper>{message}</S.MessageWrapper>
     </S.Container>
   );

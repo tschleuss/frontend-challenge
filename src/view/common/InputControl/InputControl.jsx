@@ -6,7 +6,9 @@ import * as S from "./styles";
 export const InputControl = forwardRef(
   ({ name, type, label, placeholder, onChange, onBlur, errors = {} }, ref) => (
     <S.Container>
-      <S.Label id={`id-${name}`}>{label}</S.Label>
+      <S.Label id={`id-${name}`} htmlFor={name}>
+        {label}
+      </S.Label>
       <S.Input
         type={type}
         name={name}
