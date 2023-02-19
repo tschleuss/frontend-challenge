@@ -8,7 +8,7 @@ export const BaseStyle = createGlobalStyle`
     height: 100%;
   }
   body {
-    font-family: Open-Sans, Helvetica, Sans-Serif;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
     background-color: ${colors.background};
   }
 `;
