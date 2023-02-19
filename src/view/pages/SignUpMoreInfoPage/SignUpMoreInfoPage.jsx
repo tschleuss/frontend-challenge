@@ -1,13 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFetchColorsQuery } from "app/api/baseApi";
 import { updateSignUpInfo } from "app/data/slices/signupSlice";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Button } from "view/common/Button";
 import { CheckboxControl } from "view/common/CheckboxControl";
 import { SelectControl } from "view/common/SelectControl";
+import { ColorSelectSkeleton } from "./ColorSelectSkeleton";
 import { formSchema } from "./schema";
+
 import * as S from "./styles";
 
 export const SignUpMoreInfoPage = () => {
@@ -24,9 +26,13 @@ export const SignUpMoreInfoPage = () => {
     criteriaMode: "all",
   });
 
-  const onSubmit = (data, event) => {
+  const handleOnSubmit = (data, event) => {
     dispatch(updateSignUpInfo(data));
     navigate("/confirmation");
+  };
+
+  const handleOnReturn = () => {
+    navigate("/");
   };
 
   const colorField = register("color", { required: true });
@@ -37,22 +43,28 @@ export const SignUpMoreInfoPage = () => {
       <header>
         <h1>Additional Info</h1>
       </header>
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <SelectControl
-          label="Select your favorite color"
-          defaultValue="-default-"
-          errors={errors}
-          {...colorField}
-        >
-          <option value="-default-" disabled>
-            Select a color...
-          </option>
-          {colors.map((color) => (
-            <option key={color} value={color}>
-              {color}
+
+      <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
+        {isLoading ? (
+          <ColorSelectSkeleton />
+        ) : (
+          <SelectControl
+            label="Select your favorite color"
+            defaultValue="-default-"
+            errors={errors}
+            {...colorField}
+          >
+            <option value="-default-" disabled>
+              Select a color...
             </option>
-          ))}
-        </SelectControl>
+            {colors.map((color) => (
+              <option key={color} value={color}>
+                {color}
+              </option>
+            ))}
+          </SelectControl>
+        )}
+
         <CheckboxControl
           type="checkbox"
           label="I agree to Terms and Conditions"
@@ -60,15 +72,12 @@ export const SignUpMoreInfoPage = () => {
           {...termsField}
         />
         <S.ActionFooter>
-          <S.ReturnButton
-            type="button"
-            onClick={(event) => {
-              navigate("/");
-            }}
-          >
+          <Button type="button" variant="outlined" onClick={handleOnReturn}>
             Back
-          </S.ReturnButton>
-          <S.SubmitButton type="submit">Next</S.SubmitButton>
+          </Button>
+          <Button type="submit" disabled={isLoading}>
+            Next
+          </Button>
         </S.ActionFooter>
       </S.Form>
     </>

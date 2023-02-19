@@ -1,8 +1,9 @@
 import { useSignupUserMutation } from "app/api/baseApi";
 import { selectSignUpSummary } from "app/data/selectors/selectSignupSummary";
-import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Button } from "view/common/Button";
+
 import * as S from "./styles";
 
 export const SignUpConfirmationPage = () => {
@@ -11,13 +12,17 @@ export const SignUpConfirmationPage = () => {
   const [signupUser, { isLoading, isError, isSuccess }] =
     useSignupUserMutation();
 
-  const onSubmit = async () => {
+  const handleOnSubmit = async () => {
     try {
       await signupUser(signupSummary).unwrap();
       navigate("/success");
     } catch (error) {
       navigate("/error");
     }
+  };
+
+  const handleOnReturn = () => {
+    navigate("/more-info");
   };
 
   return (
@@ -43,22 +48,17 @@ export const SignUpConfirmationPage = () => {
           {signupSummary.color}
         </S.ItemWrapper>
         <S.ItemWrapper>
-          <span>Terms and Conditions:</span>{" "}
+          <span>Terms and Conditions:</span>
           {signupSummary.terms ? "Agreed" : "Didn't Agreed"}
         </S.ItemWrapper>
       </S.ListContainer>
       <S.ActionFooter>
-        <S.ReturnButton
-          type="button"
-          onClick={(event) => {
-            navigate("/more-info");
-          }}
-        >
+        <Button type="button" variant="outlined" onClick={handleOnReturn}>
           Back
-        </S.ReturnButton>
-        <S.SubmitButton type="button" onClick={onSubmit}>
+        </Button>
+        <Button type="button" onClick={handleOnSubmit} loading={isLoading}>
           Next
-        </S.SubmitButton>
+        </Button>
       </S.ActionFooter>
     </>
   );

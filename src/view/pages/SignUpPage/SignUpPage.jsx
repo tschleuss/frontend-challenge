@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { formSchema } from "./schema";
-import * as S from "./styles";
 import { useDispatch } from "react-redux";
 import { updateSignUpInfo } from "app/data/slices/signupSlice";
 import { InputControl } from "view/common/InputControl";
+import { Button } from "view/common/Button";
+
+import * as S from "./styles";
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export const SignUpPage = () => {
     criteriaMode: "all",
   });
 
-  const onSubmit = (data, event) => {
+  const handleOnSubmit = (data, event) => {
     dispatch(updateSignUpInfo(data));
     navigate("/more-info");
   };
@@ -35,7 +37,7 @@ export const SignUpPage = () => {
       <header>
         <h1>Sign Up</h1>
       </header>
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
+      <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
         <InputControl
           type="text"
           label="First Name"
@@ -57,7 +59,9 @@ export const SignUpPage = () => {
           errors={errors}
           {...passwordField}
         />
-        <S.SubmitButton type="submit">Next</S.SubmitButton>
+        <S.ActionFooter>
+          <Button type="submit">Next</Button>
+        </S.ActionFooter>
       </S.Form>
     </>
   );

@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Card } from "view/common/Card";
+
 import * as S from "./styles";
 
 export const SignUpLayout = () => (
