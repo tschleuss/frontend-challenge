@@ -2,6 +2,8 @@ export const colors = {
   brand: "#0e680e",
   background: "#EEEEF5",
   containerBackground: "#FFFFFF",
+  black: "#000",
+  white: "#FFF"
 };
 
 export const spacing = {
