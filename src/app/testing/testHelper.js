@@ -21,5 +21,5 @@ const renderProviders = (component, routerOptions, store) => (
 export const renderUI = (component, options = {}) => {
   const { routerOptions, store } = generateTestContext(options);
   const rendered = render(renderProviders(component, routerOptions, store));
-  return { rendered, store };
+  return { ...rendered, store };
 };
