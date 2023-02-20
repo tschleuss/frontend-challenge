@@ -4,6 +4,12 @@ export const colors = {
   containerBackground: '#FFFFFF',
   black: '#000',
   white: '#FFF',
+  red: '#d32f2f',
+  green: '#2e7d32',
+  errorBackground: "#fdeded",
+  errorText: "#5f2120",
+  successBackground: "#edf7ed",
+  successText: "#1e4620",
 };
 
 export const spacing = {

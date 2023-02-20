@@ -1,4 +1,4 @@
-import { radius } from 'app/theme/tokens';
+import { colors, radius } from 'app/theme/tokens';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -8,11 +8,11 @@ export const Container = styled.div`
   border-radius: ${radius.large};
 
   &[data-severity='error'] {
-    background-color: #fdeded;
+    background-color: ${colors.errorBackground};
   }
 
   &[data-severity='success'] {
-    background-color: #edf7ed;
+    background-color: ${colors.successBackground};
   }
 `;
 
@@ -21,12 +21,12 @@ export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  ${Container}[data-severity="error"] & {
-    color: #d32f2f;
+  ${Container}[data-severity='error'] & {
+    color: ${colors.red};
   }
 
-  ${Container}[data-severity="success"] & {
-    color: #2e7d32;
+  ${Container}[data-severity='success'] & {
+    color: ${colors.green};
   }
 `;
 
@@ -35,11 +35,11 @@ export const MessageWrapper = styled.div`
   min-width: 0px;
   overflow: auto;
 
-  ${Container}[data-severity="error"] & {
-    color: #5f2120;
+  ${Container}[data-severity='error'] & {
+    color: ${colors.errorText};
   }
 
-  ${Container}[data-severity="success"] & {
-    color: #1e4620;
+  ${Container}[data-severity='success'] & {
+    color: ${colors.successText};
   }
 `;

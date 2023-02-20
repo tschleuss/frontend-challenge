@@ -65,3 +65,5 @@ I also used **Mock Service Worker (msw)** because it's one of the best tools tha
 - Improve project with **eslint**, **prettier**, and other rules to improve developers experience.
 
 - Better **error messaging** instead of always showing a generic one.
+
+- Better *design system* for more consistent usage of theme, tokens, and others, like default spacings, sizes, and so on..
