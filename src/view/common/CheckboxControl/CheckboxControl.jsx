@@ -18,7 +18,7 @@ export const CheckboxControl = forwardRef(
         />
         {label}
       </S.Label>
-      {errors[name] && <ValidationMessage message="This field is required" />}
+      {errors[name] && <ValidationMessage message={errors[name].message} />}
     </S.Container>
   ),
 );

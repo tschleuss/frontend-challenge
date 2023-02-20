@@ -23,7 +23,7 @@ export const SelectControl = forwardRef(
       >
         {children}
       </S.Select>
-      {errors[name] && <ValidationMessage message="This field is required" />}
+      {errors[name] && <ValidationMessage message={errors[name].message} />}
     </S.Container>
   ),
 );
