@@ -14,6 +14,6 @@ export const CardWrapper = styled.div`
     width: 400px;
   `};
   ${breakpointDown.xs`
-    max-width: 100%;
+    width: 100%;
   `};
 `;
