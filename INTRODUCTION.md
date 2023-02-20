@@ -63,3 +63,5 @@ I also used **Mock Service Worker (msw)** because it's one of the best tools tha
 -  **Accessibility**. I also added a couple of attributes for accessibility but there are more that could be done tto further improve it.
 
 - Improve project with **eslint**, **prettier**, and other rules to improve developers experience.
+
+- Better **error messaging** instead of always showing a generic one.
