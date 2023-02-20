@@ -2,6 +2,7 @@ import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useFetchColorsQuery } from 'app/api/baseApi';
 import { selectSignupHasBasicInfo } from 'app/data/selectors/selectSignupHasBasicInfo';
+import { selectSignUp } from 'app/data/selectors/selectSignup';
 import { updateSignUpInfo } from 'app/data/slices/signupSlice';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +18,7 @@ import * as S from './styles';
 export const SignUpMoreInfoPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const signupValues = useSelector(selectSignUp);
   const hasBasicInfo = useSelector(selectSignupHasBasicInfo);
   const { isLoading, data: colors = [] } = useFetchColorsQuery();
 
@@ -27,6 +29,7 @@ export const SignUpMoreInfoPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
     criteriaMode: 'all',
+    defaultValues: signupValues
   });
 
   const handleOnSubmit = (data) => {

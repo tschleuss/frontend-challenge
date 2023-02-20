@@ -2,17 +2,19 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateSignUpInfo } from 'app/data/slices/signupSlice';
 import { InputControl } from 'view/common/InputControl';
 import { Button } from 'view/common/Button';
 import { formSchema } from './schema';
+import { selectSignUp } from 'app/data/selectors/selectSignup';
 
 import * as S from './styles';
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const signupValues = useSelector(selectSignUp);
 
   const {
     register,
@@ -21,6 +23,7 @@ export const SignUpPage = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
     criteriaMode: 'all',
+    defaultValues: signupValues
   });
 
   const handleOnSubmit = (data) => {

@@ -13,7 +13,8 @@ export const signupSlice = createSlice({
   initialState,
   reducers: {
     updateSignUpInfo: (state, action) => ({ ...state, ...action.payload }),
+    clearSignUpInfo: () => initialState,
   },
 });
 
-export const { updateSignUpInfo } = signupSlice.actions;
+export const { updateSignUpInfo, clearSignUpInfo } = signupSlice.actions;
