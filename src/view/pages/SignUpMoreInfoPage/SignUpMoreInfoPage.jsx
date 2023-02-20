@@ -1,9 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFetchColorsQuery } from "app/api/baseApi";
+import { selectSignupHasBasicInfo } from "app/data/selectors/selectSignupHasBasicInfo";
 import { updateSignUpInfo } from "app/data/slices/signupSlice";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "view/common/Button";
 import { CheckboxControl } from "view/common/CheckboxControl";
 import { SelectControl } from "view/common/SelectControl";
@@ -15,6 +16,7 @@ import * as S from "./styles";
 export const SignUpMoreInfoPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const hasBasicInfo = useSelector(selectSignupHasBasicInfo);
   const { isLoading, data: colors = [] } = useFetchColorsQuery();
 
   const {
@@ -26,7 +28,7 @@ export const SignUpMoreInfoPage = () => {
     criteriaMode: "all",
   });
 
-  const handleOnSubmit = (data, event) => {
+  const handleOnSubmit = (data) => {
     dispatch(updateSignUpInfo(data));
     navigate("/confirmation");
   };
@@ -37,6 +39,10 @@ export const SignUpMoreInfoPage = () => {
 
   const colorField = register("color", { required: true });
   const termsField = register("terms", { required: true });
+
+  if (!hasBasicInfo) {
+    return <Navigate to="/error" />;
+  }
 
   return (
     <>

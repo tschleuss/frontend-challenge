@@ -1,16 +1,17 @@
 import { useSignupUserMutation } from "app/api/baseApi";
-import { selectSignUpSummary } from "app/data/selectors/selectSignupSummary";
+import { selectSignUp } from "app/data/selectors/selectSignup";
+import { selectSignupHasAllData } from "app/data/selectors/selectSignupHasAllData";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "view/common/Button";
 
 import * as S from "./styles";
 
 export const SignUpConfirmationPage = () => {
   const navigate = useNavigate();
-  const signupSummary = useSelector(selectSignUpSummary);
-  const [signupUser, { isLoading, isError, isSuccess }] =
-    useSignupUserMutation();
+  const hasAllData = useSelector(selectSignupHasAllData);
+  const signupSummary = useSelector(selectSignUp);
+  const [signupUser, { isLoading }] = useSignupUserMutation();
 
   const handleOnSubmit = async () => {
     try {
@@ -24,6 +25,10 @@ export const SignUpConfirmationPage = () => {
   const handleOnReturn = () => {
     navigate("/more-info");
   };
+
+  if (!hasAllData) {
+    return <Navigate to="/error" />;
+  }
 
   return (
     <>
@@ -41,7 +46,7 @@ export const SignUpConfirmationPage = () => {
         </S.ItemWrapper>
         <S.ItemWrapper>
           <span>Password:</span>
-          {signupSummary.password}
+          {"*".repeat(signupSummary.password.length)}
         </S.ItemWrapper>
         <S.ItemWrapper>
           <span>Favorite Color:</span>
@@ -57,7 +62,7 @@ export const SignUpConfirmationPage = () => {
           Back
         </Button>
         <Button type="button" onClick={handleOnSubmit} loading={isLoading}>
-          Next
+          Submit
         </Button>
       </S.ActionFooter>
     </>
