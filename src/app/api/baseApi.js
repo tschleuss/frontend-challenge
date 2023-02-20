@@ -17,8 +17,13 @@ export const api = createApi({
         url: API_SUBMIT_ENDPOINT,
         method: 'POST',
         body: data,
-        responseHandler: (response) =>
-          response.status === 200 ? response.text() : response.json(),
+        responseHandler: (response) => {
+          /**
+           * Custom handler necessary since API returns a "OK" text for status 200
+           * instead of a JSON, and RTK can't handle that directly.
+           */
+          return response.status === 200 ? response.text() : response.json();
+        },
       }),
     }),
   }),
