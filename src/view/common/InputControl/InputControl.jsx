@@ -19,7 +19,6 @@ export const InputControl = forwardRef(
         ref={ref}
         type={type}
       />
-      {console.log(errors)}
       {errors[name] && <ValidationMessage message={errors[name].message} />}
     </S.Container>
   )
