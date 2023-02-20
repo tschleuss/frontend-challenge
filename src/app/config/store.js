@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { api } from "app/api/baseApi";
-import { signupSlice } from "app/data/slices/signupSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { api } from 'app/api/baseApi';
+import { signupSlice } from 'app/data/slices/signupSlice';
 
 export const setupStore = (preloadedState = {}) =>
   configureStore({

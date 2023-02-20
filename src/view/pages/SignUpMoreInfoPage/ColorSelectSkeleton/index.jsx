@@ -1,1 +1,1 @@
-export * from "./ColorSelectSkeleton";
+export * from './ColorSelectSkeleton';

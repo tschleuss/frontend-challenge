@@ -1,6 +1,7 @@
-import { colors } from "app/theme/tokens";
+import React from 'react';
+import { colors } from 'app/theme/tokens';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const LoadingSpinner = ({
   color = colors.black,

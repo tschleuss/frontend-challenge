@@ -1,14 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { AlertMessage } from "view/common/AlertMessage";
-import { Button } from "view/common/Button";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AlertMessage } from 'view/common/AlertMessage';
+import { Button } from 'view/common/Button';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const SignUpSuccessPage = () => {
   const navigate = useNavigate();
 
   const handleOnRestart = () => {
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -18,12 +19,12 @@ export const SignUpSuccessPage = () => {
       </header>
       <S.MessageWrapper>
         <AlertMessage
-          severity="success"
           message="You should receive a confirmation email soon."
+          severity="success"
         />
       </S.MessageWrapper>
       <S.ActionFooter>
-        <Button type="button" onClick={handleOnRestart}>
+        <Button onClick={handleOnRestart} type="button">
           Restart
         </Button>
       </S.ActionFooter>

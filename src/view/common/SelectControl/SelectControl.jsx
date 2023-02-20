@@ -1,29 +1,29 @@
-import { forwardRef } from "react";
-import { ValidationMessage } from "../ValidationMessage";
+import React, { forwardRef } from 'react';
+import { ValidationMessage } from '../ValidationMessage';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const SelectControl = forwardRef(
   (
     { name, defaultValue, label, onChange, onBlur, errors = {}, children },
-    ref
+    ref,
   ) => (
     <S.Container>
-      <S.Label id={`id-${name}`} htmlFor={name}>
+      <S.Label htmlFor={name} id={`id-${name}`}>
         {label}
       </S.Label>
       <S.Select
-        name={name}
-        ref={ref}
-        onChange={onChange}
-        onBlur={onBlur}
-        defaultValue={defaultValue}
+        aria-invalid={errors[name] ? 'true' : 'false'}
         aria-labelledby={`id-${name}`}
-        aria-invalid={errors[name] ? "true" : "false"}
+        defaultValue={defaultValue}
+        name={name}
+        onBlur={onBlur}
+        onChange={onChange}
+        ref={ref}
       >
         {children}
       </S.Select>
       {errors[name] && <ValidationMessage message="This field is required" />}
     </S.Container>
-  )
+  ),
 );

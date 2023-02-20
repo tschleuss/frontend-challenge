@@ -1,6 +1,6 @@
-import { breakpointDown, breakpointUp } from "app/theme/media";
-import { spacing } from "app/theme/tokens";
-import styled from "styled-components";
+import { breakpointDown, breakpointUp } from 'app/theme/media';
+import { spacing } from 'app/theme/tokens';
+import styled from 'styled-components';
 
 export const Container = styled.main`
   display: flex;

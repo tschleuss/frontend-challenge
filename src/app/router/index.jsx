@@ -1,14 +1,15 @@
-import { SignUpConfirmationPage } from "view/pages/SignUpConfirmationPage";
-import { SignUpErrorPage } from "view/pages/SignUpErrorPage";
-import { SignUpMoreInfoPage } from "view/pages/SignUpMoreInfoPage";
-import { SignUpPage } from "view/pages/SignUpPage";
-import { SignUpSuccessPage } from "view/pages/SignUpSuccessPage";
-import { createBrowserRouter } from "react-router-dom";
-import { SignUpLayout } from "view/layout/SignUpLayout/SignUpLayout";
+import React from 'react';
+import { SignUpConfirmationPage } from 'view/pages/SignUpConfirmationPage';
+import { SignUpErrorPage } from 'view/pages/SignUpErrorPage';
+import { SignUpMoreInfoPage } from 'view/pages/SignUpMoreInfoPage';
+import { SignUpPage } from 'view/pages/SignUpPage';
+import { SignUpSuccessPage } from 'view/pages/SignUpSuccessPage';
+import { createBrowserRouter } from 'react-router-dom';
+import { SignUpLayout } from 'view/layout/SignUpLayout/SignUpLayout';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <SignUpLayout />,
     children: [
       {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/more-info",
+    path: '/more-info',
     element: <SignUpLayout />,
     children: [
       {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/confirmation",
+    path: '/confirmation',
     element: <SignUpLayout />,
     children: [
       {
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/success",
+    path: '/success',
     element: <SignUpLayout />,
     children: [
       {
@@ -48,7 +49,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/error",
+    path: '/error',
     element: <SignUpLayout />,
     children: [
       {

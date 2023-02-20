@@ -1,5 +1,5 @@
-import { spacing } from "app/theme/tokens";
-import styled from "styled-components";
+import { spacing } from 'app/theme/tokens';
+import styled from 'styled-components';
 
 export const MessageWrapper = styled.div`
   margin-bottom: ${spacing.medium};

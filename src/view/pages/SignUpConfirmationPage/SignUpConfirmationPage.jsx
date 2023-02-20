@@ -1,11 +1,12 @@
-import { useSignupUserMutation } from "app/api/baseApi";
-import { selectSignUp } from "app/data/selectors/selectSignup";
-import { selectSignupHasAllData } from "app/data/selectors/selectSignupHasAllData";
-import { useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Button } from "view/common/Button";
+import React from 'react';
+import { useSignupUserMutation } from 'app/api/baseApi';
+import { selectSignUp } from 'app/data/selectors/selectSignup';
+import { selectSignupHasAllData } from 'app/data/selectors/selectSignupHasAllData';
+import { useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Button } from 'view/common/Button';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const SignUpConfirmationPage = () => {
   const navigate = useNavigate();
@@ -16,14 +17,14 @@ export const SignUpConfirmationPage = () => {
   const handleOnSubmit = async () => {
     try {
       await signupUser(signupSummary).unwrap();
-      navigate("/success");
+      navigate('/success');
     } catch (error) {
-      navigate("/error");
+      navigate('/error');
     }
   };
 
   const handleOnReturn = () => {
-    navigate("/more-info");
+    navigate('/more-info');
   };
 
   if (!hasAllData) {
@@ -46,7 +47,7 @@ export const SignUpConfirmationPage = () => {
         </S.ItemWrapper>
         <S.ItemWrapper>
           <span>Password:</span>
-          {"*".repeat(signupSummary.password.length)}
+          {'*'.repeat(signupSummary.password.length)}
         </S.ItemWrapper>
         <S.ItemWrapper>
           <span>Favorite Color:</span>
@@ -54,14 +55,14 @@ export const SignUpConfirmationPage = () => {
         </S.ItemWrapper>
         <S.ItemWrapper>
           <span>Terms and Conditions:</span>
-          {signupSummary.terms ? "Agreed" : "Didn't Agreed"}
+          {signupSummary.terms ? 'Agreed' : "Didn't Agreed"}
         </S.ItemWrapper>
       </S.ListContainer>
       <S.ActionFooter>
-        <Button type="button" variant="outlined" onClick={handleOnReturn}>
+        <Button onClick={handleOnReturn} type="button" variant="outlined">
           Back
         </Button>
-        <Button type="button" onClick={handleOnSubmit} loading={isLoading}>
+        <Button loading={isLoading} onClick={handleOnSubmit} type="button">
           Submit
         </Button>
       </S.ActionFooter>

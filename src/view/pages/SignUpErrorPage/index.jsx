@@ -1,1 +1,1 @@
-export * from "./SignUpErrorPage";
+export * from './SignUpErrorPage';

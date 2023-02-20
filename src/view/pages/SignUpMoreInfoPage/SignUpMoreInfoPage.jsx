@@ -1,17 +1,18 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useFetchColorsQuery } from "app/api/baseApi";
-import { selectSignupHasBasicInfo } from "app/data/selectors/selectSignupHasBasicInfo";
-import { updateSignUpInfo } from "app/data/slices/signupSlice";
-import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Button } from "view/common/Button";
-import { CheckboxControl } from "view/common/CheckboxControl";
-import { SelectControl } from "view/common/SelectControl";
-import { ColorSelectSkeleton } from "./ColorSelectSkeleton";
-import { formSchema } from "./schema";
+import React from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useFetchColorsQuery } from 'app/api/baseApi';
+import { selectSignupHasBasicInfo } from 'app/data/selectors/selectSignupHasBasicInfo';
+import { updateSignUpInfo } from 'app/data/slices/signupSlice';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Button } from 'view/common/Button';
+import { CheckboxControl } from 'view/common/CheckboxControl';
+import { SelectControl } from 'view/common/SelectControl';
+import { ColorSelectSkeleton } from './ColorSelectSkeleton';
+import { formSchema } from './schema';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const SignUpMoreInfoPage = () => {
   const dispatch = useDispatch();
@@ -25,20 +26,20 @@ export const SignUpMoreInfoPage = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
-    criteriaMode: "all",
+    criteriaMode: 'all',
   });
 
   const handleOnSubmit = (data) => {
     dispatch(updateSignUpInfo(data));
-    navigate("/confirmation");
+    navigate('/confirmation');
   };
 
   const handleOnReturn = () => {
-    navigate("/");
+    navigate('/');
   };
 
-  const colorField = register("color", { required: true });
-  const termsField = register("terms", { required: true });
+  const colorField = register('color', { required: true });
+  const termsField = register('terms', { required: true });
 
   if (!hasBasicInfo) {
     return <Navigate to="/error" />;
@@ -55,12 +56,12 @@ export const SignUpMoreInfoPage = () => {
           <ColorSelectSkeleton />
         ) : (
           <SelectControl
-            label="Select your favorite color"
             defaultValue="-default-"
             errors={errors}
+            label="Select your favorite color"
             {...colorField}
           >
-            <option value="-default-" disabled>
+            <option disabled value="-default-">
               Select a color...
             </option>
             {colors.map((color) => (
@@ -72,16 +73,16 @@ export const SignUpMoreInfoPage = () => {
         )}
 
         <CheckboxControl
-          type="checkbox"
-          label="I agree to Terms and Conditions"
           errors={errors}
+          label="I agree to Terms and Conditions"
+          type="checkbox"
           {...termsField}
         />
         <S.ActionFooter>
-          <Button type="button" variant="outlined" onClick={handleOnReturn}>
+          <Button onClick={handleOnReturn} type="button" variant="outlined">
             Back
           </Button>
-          <Button type="submit" disabled={isLoading}>
+          <Button disabled={isLoading} type="submit">
             Next
           </Button>
         </S.ActionFooter>

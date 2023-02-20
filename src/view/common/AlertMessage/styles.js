@@ -1,5 +1,5 @@
-import { radius } from "app/theme/tokens";
-import styled from "styled-components";
+import { radius } from 'app/theme/tokens';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -7,11 +7,11 @@ export const Container = styled.div`
   border-radius: 4px;
   border-radius: ${radius.large};
 
-  &[data-severity="error"] {
+  &[data-severity='error'] {
     background-color: #fdeded;
   }
 
-  &[data-severity="success"] {
+  &[data-severity='success'] {
     background-color: #edf7ed;
   }
 `;

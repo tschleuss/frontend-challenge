@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  name: "",
-  email: "",
-  password: "",
-  color: "",
+  name: '',
+  email: '',
+  password: '',
+  color: '',
   terms: false,
 };
 
 export const signupSlice = createSlice({
-  name: "signup",
+  name: 'signup',
   initialState,
   reducers: {
     updateSignUpInfo: (state, action) => ({ ...state, ...action.payload }),

@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { colors } from "./tokens";
+import { createGlobalStyle } from 'styled-components';
+import { colors } from './tokens';
 
 export const BaseStyle = createGlobalStyle`
   html, body {

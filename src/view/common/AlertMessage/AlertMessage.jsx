@@ -1,7 +1,7 @@
-import { XOctagonIcon } from "lucide-react";
-import { CheckCircle } from "lucide-react";
+import React from 'react';
+import { XOctagonIcon, CheckCircle } from 'lucide-react';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 const SEVERITY_ICONS = {
   error: XOctagonIcon,

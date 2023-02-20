@@ -1,5 +1,5 @@
-import { colors, radius, spacing } from "app/theme/tokens";
-import styled from "styled-components";
+import { colors, radius, spacing } from 'app/theme/tokens';
+import styled from 'styled-components';
 
 export const Container = styled.section`
   display: flex;

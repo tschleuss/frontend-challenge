@@ -1,14 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { AlertMessage } from "view/common/AlertMessage";
-import { Button } from "view/common/Button";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AlertMessage } from 'view/common/AlertMessage';
+import { Button } from 'view/common/Button';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const SignUpErrorPage = () => {
   const navigate = useNavigate();
 
   const handleOnRestart = () => {
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -18,12 +19,12 @@ export const SignUpErrorPage = () => {
       </header>
       <S.MessageWrapper>
         <AlertMessage
-          severity="error"
           message="Uh oh, something went wrong. Please try again later"
+          severity="error"
         />
       </S.MessageWrapper>
       <S.ActionFooter>
-        <Button type="button" onClick={handleOnRestart}>
+        <Button onClick={handleOnRestart} type="button">
           Restart
         </Button>
       </S.ActionFooter>
