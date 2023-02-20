@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +22,7 @@ export const SignUpPage = () => {
     criteriaMode: "all",
   });
 
-  const handleOnSubmit = (data, event) => {
+  const handleOnSubmit = (data) => {
     dispatch(updateSignUpInfo(data));
     navigate("/more-info");
   };
