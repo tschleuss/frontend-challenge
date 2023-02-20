@@ -4,7 +4,7 @@ import { ValidationMessage } from '../ValidationMessage';
 import * as S from './styles';
 
 export const CheckboxControl = forwardRef(
-  ({ name, label, onChange, onBlur, errors = {} }, ref) => (
+  ({ name, children, onChange, onBlur, errors = {} }, ref) => (
     <S.Container>
       <S.Label id={`id-${name}`}>
         <S.Input
@@ -16,7 +16,7 @@ export const CheckboxControl = forwardRef(
           ref={ref}
           type="checkbox"
         />
-        {label}
+        {children}
       </S.Label>
       {errors[name] && <ValidationMessage message={errors[name].message} />}
     </S.Container>
