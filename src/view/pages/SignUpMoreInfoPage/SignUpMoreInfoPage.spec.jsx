@@ -44,7 +44,7 @@ describe('SignUpMoreInfoPage', () => {
     ).toBeVisible();
 
     expect(await screen.findByText('Select your favorite color')).toBeVisible();
-    expect(screen.getByText('I agree to Terms and Conditions')).toBeVisible();
+    expect(screen.getByText('I agree to')).toBeVisible();
     expect(screen.getByRole('button', { name: /Back/i })).toBeVisible();
     expect(screen.getByRole('button', { name: /Next/i })).toBeVisible();
   });
@@ -58,10 +58,8 @@ describe('SignUpMoreInfoPage', () => {
     await waitFor(() => expect(screen.getByText('Next')).not.toBeDisabled());
     await user.click(screen.getByText('Next'));
 
-    expect(screen.getAllByText('This field is required')).toHaveLength(2);
-    screen.getAllByText('This field is required').forEach((element) => {
-      expect(element).toBeVisible();
-    });
+    expect(screen.getByText('color is a required field')).toBeVisible();
+    expect(screen.getByText('The terms and conditions must be accepted.')).toBeVisible();
     expect(mockUseNavigate).not.toHaveBeenCalled();
   });
 
@@ -78,7 +76,7 @@ describe('SignUpMoreInfoPage', () => {
       ['black'],
     );
 
-    await user.click(screen.getByText('I agree to Terms and Conditions'));
+    await user.click(screen.getByText('I agree to'));
     await user.click(screen.getByText('Next'));
 
     expect(mockUseNavigate).toHaveBeenCalledWith('/confirmation');

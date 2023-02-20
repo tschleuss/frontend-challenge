@@ -59,12 +59,12 @@ export const SignUpMoreInfoPage = () => {
           <ColorSelectSkeleton />
         ) : (
           <SelectControl
-            defaultValue="-default-"
+            defaultValue=""
             errors={errors}
             label="Select your favorite color"
             {...colorField}
           >
-            <option disabled value="-default-">
+            <option disabled value="">
               Select a color...
             </option>
             {colors.map((color) => (
@@ -74,13 +74,15 @@ export const SignUpMoreInfoPage = () => {
             ))}
           </SelectControl>
         )}
-
-        <CheckboxControl
-          errors={errors}
-          label="I agree to Terms and Conditions"
-          type="checkbox"
-          {...termsField}
-        />
+        <CheckboxControl errors={errors} {...termsField}>
+          I agree to&nbsp;
+          <a
+            href="https://www.upgrade.com/funnel/borrower-documents/TERMS_OF_USE"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+        </CheckboxControl>
         <S.ActionFooter>
           <Button onClick={handleOnReturn} type="button" variant="outlined">
             Back

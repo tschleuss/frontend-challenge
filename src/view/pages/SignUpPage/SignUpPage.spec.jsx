@@ -29,10 +29,9 @@ describe('SignUpPage', () => {
     const user = userEvent.setup();
     await user.click(screen.getByText('Next'));
 
-    expect(screen.getAllByText('This field is required')).toHaveLength(3);
-    screen.getAllByText('This field is required').forEach((element) => {
-      expect(element).toBeVisible();
-    });
+    expect(screen.getByText('name is a required field')).toBeVisible();
+    expect(screen.getByText('email is a required field')).toBeVisible();
+    expect(screen.getByText('password must be at least 8 characters')).toBeVisible();
     expect(mockUseNavigate).not.toHaveBeenCalled();
   });
 
